@@ -3,7 +3,7 @@ import { Writable, Subscriber, Unsubscriber, Invalidator } from "./types";
 
 
 export function writable<T>(initial?: T): Writable<T> & { get(): T } {
-  const { sub, unsub, update, set, get } = createStore(initial);
+  const { subscribe: sub, unsub, update, set, get } = createStore(initial);
 
   function subscribe(run: Subscriber<T>, invalidate?: Invalidator<T>): Unsubscriber {
     run(get());
